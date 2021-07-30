@@ -1,0 +1,50 @@
+[System]
+Name='cw2'
+Type='mamdani'
+Version=2.0
+NumInputs=3
+NumOutputs=1
+NumRules=8
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Y'
+Range=[16 235]
+NumMFs=2
+MF1='low':'zmf',[16 119.99999]
+MF2='high':'smf',[120 235]
+
+[Input2]
+Name='Cb'
+Range=[16 240]
+NumMFs=2
+MF1='high':'smf',[120 240]
+MF2='low':'zmf',[16 119.999]
+
+[Input3]
+Name='Cr'
+Range=[16 240]
+NumMFs=2
+MF1='low':'zmf',[16 120]
+MF2='high':'smf',[120 240]
+
+[Output1]
+Name='Pixel'
+Range=[0 2]
+NumMFs=2
+MF1='skin':'smf',[1 2]
+MF2='nonSkin':'zmf',[0 1]
+
+[Rules]
+1 1 1, 2 (1) : 1
+1 1 2, 2 (1) : 1
+1 2 1, 2 (1) : 1
+1 2 2, 2 (1) : 1
+2 1 1, 2 (1) : 1
+2 1 2, 2 (1) : 1
+2 2 1, 2 (1) : 1
+2 2 2, 1 (1) : 1
